@@ -1,0 +1,16 @@
+@baseUrl = http://localhost:5080
+
+### Get current vol surface
+GET {{baseUrl}}/api/VolSurface/Surface/EURUSD
+
+### Update vol surface
+POST {{baseUrl}}/api/VolSurface/UpdateSurface/EURUSD
+Content-Type: application/json
+
+{
+  "tenor": "3M",
+  "vol": 0.185
+}
+
+### List underlyings
+GET {{baseUrl}}/api/VolSurface/GetUnderlyings
