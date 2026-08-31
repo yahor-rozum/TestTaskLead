@@ -43,16 +43,8 @@ public class VolSurfaceController : ControllerBase
         {
             var snapshot = _service.RefreshSurface(name);
             refreshed.Add(snapshot.Underlying);
-            LogRefreshAudit(name);
         });
 
         return Ok(refreshed);
-    }
-
-    private static async void LogRefreshAudit(string underlying)
-    {
-        await Task.Delay(1);
-        var tag = underlying.Substring(0, 3).ToUpperInvariant();
-        Console.WriteLine($"[{tag}] refreshed at {DateTime.UtcNow:O}");
     }
 }
