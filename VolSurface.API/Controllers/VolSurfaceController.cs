@@ -35,7 +35,7 @@ public class VolSurfaceController : ControllerBase
     public async Task<IActionResult> RefreshAll()
     {
         var underlyingsCsv = await _service.GetUnderlyingsAsync();
-        var names = (underlyingsCsv ?? string.Empty).Split(',', StringSplitOptions.RemoveEmptyEntries);
+        var names = underlyingsCsv.Split(',', StringSplitOptions.RemoveEmptyEntries);
 
         var refreshed = new List<string>();
 

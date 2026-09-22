@@ -5,6 +5,9 @@ using VolSurface.API.Models;
 
 public class VolSurfaceService
 {
+    private static readonly ILogger Logger =
+        LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<VolSurfaceService>();
+
     private readonly InMemorySurfaceStore _store;
     private readonly MarketDataClient _marketDataClient;
 
@@ -32,6 +35,8 @@ public class VolSurfaceService
         }
 
         _store.SaveAsync(underlying, snapshot);
+
+        Logger.LogInformation($"Updated surface for {underlying}");
     }
 
     public VolSurfaceSnapshot RefreshSurface(string underlying)

@@ -15,5 +15,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 app.MapControllers();
+// Supposed to be readiness probe
 app.MapGet("/health", () => Results.Ok("healthy"));
 app.Run();
